@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linksammlung AI</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        canvas {
+            display: block;
+            background-color: #222;
+        }
+
+        .menu-container {
+            position: fixed;
+            top: 8%;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+            transition: left 0.3s ease;
+        }
+
+        .menu-button::before,
+        .menu-button::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 4px;
+            background-color: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .menu-button::before {
+            transform: translate(-50%, 50%) rotate(-45deg);
+        }
+
+        .menu-button::after {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .menu-link {
+		    font-family: consolas;
+            display: block;
+            background-color: #444;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            margin-bottom: 5px;
+            border: none;
+            cursor: pointer;
+            top: 10%;
+        }
+
+        .menu-link:hover {
+            background-color: #555;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .menu-hidden .menu-container {
+            left: -250px;
+        }
+
+        .menu-hidden .menu-button {
+            left: 20px;
+        }
+
+        /* Stil für die reflektierende Linksammlung */
+        #link-collection {
+		    font-family: consolas;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            max-height: 70%;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            z-index: 2;
+            overflow: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        /* Stil für Links innerhalb der Sammlung */
+        #link-collection a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        #link-collection a:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Anpassen der Linksammlung, wenn das Menü geöffnet ist */
+        body.menu-open #link-collection {
+            left: calc(50% + 125px);
+            transform: translate(-50%, -50%);
+        }
+
+        /* Medienabfrage für Tablet-Größen */
+        @media (max-width: 768px) {
+            #link-collection {
+                width: 90%;
+                font-size: 14px;
+                padding: 15px;
+            }
+
+            #link-collection a {
+                padding: 8px;
+                margin-bottom: 8px;
+            }
+        }
+
+        /* Styling für das Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            z-index: 1000;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .window-box {
+            background-color: #333;
+            color: white;
+            width: 400px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .overlay-content {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .overlay button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid #4CAF50;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .overlay button:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(72, 177, 72, 0.5);
+        }
+
+        /* Styling für die Überschrift */
+        #link-collection h1 {
+		    font-family: consolas;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+        }
+    </style>
+</head>
+<body class="menu-hidden">
+<div class="menu-container" id="menuContainer">
+    <button class="menu-button" onclick="toggleMenu()"></button>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="./../Ueber_Mich.html" class="menu-link">Über Mich</a>
+        <a href="./../Links.html" class="menu-link">Links</a>
+        <a href="./../Philosophie.html" class="menu-link">Philosophie</a>
+        <a href="./../DSGVO/Datenschutzerklärung.html" class="menu-link">Datenschutz</a>
+        <a href="https://github.com/inandoutofthebox/website" class="menu-link">Github</a>
+    </div>
+</div>
+<div class="container">
+    <canvas id="canvas"></canvas>
+    <div id="link-collection">
+        <h1>Linux Projects</h1>
+        <a href="https://github.com/inandoutofthebox/Github-Profiles-Script/tree/main">Git Profile Manager for WSL2 - Github</a>
+        <br>
+        <a href="./../../index.html">Startseite</a>
+    </div>
+</div>
+
+<!-- Overlay Hinweis -->
+<div class="overlay" id="overlay">
+    <div class="window-box">
+        <div class="overlay-content">
+            <p>Bevor Sie fortfahren, möchten wir Sie darauf hinweisen, dass Sie auf eine Seite zugreifen, die Daten zu Ihrem Gerät sammeln könnte. Um fortzufahren, müssen Sie bestätigen, dass Sie unsere <a href="./webrtc/Datenschutzerklärung.html" target="_blank">Datenschutzerklärung</a> gelesen und verstanden haben.</p>
+            <label>
+                <input type="checkbox" id="privacyConsent" required> Ich habe die Datenschutzerklärung gelesen und akzeptiere diese.
+            </label>
+        </div>
+        <button id="confirmButton" disabled>Bestätigen und fortfahren</button>
+    </div>
+</div>
+
+<script>
+    // Initially, the overlay is hidden
+    document.getElementById('overlay').style.display = 'none';
+
+    // Variable to track if the overlay has been shown before
+    let overlayShown = false;
+
+    // Function to show the overlay when the link is clicked
+    document.getElementById('webrtcLink').addEventListener('click', function() {
+        if (!overlayShown) {
+            // Show the overlay only when clicked for the first time
+            document.getElementById('overlay').style.display = 'flex';
+            overlayShown = true;
+        }
+    });
+
+    // Function to hide the overlay and redirect after confirmation
+    document.getElementById('confirmButton').addEventListener('click', function() {
+        // Hide the overlay
+        document.getElementById('overlay').style.display = 'none';
+        // Redirect to the WebRTC page
+        window.location.href = './webrtc/'; // Relative URL for redirection
+    });
+
+    // Code für dernlinsk
+    document.getElementById('dernlinskLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Verhindert, dass der Link eine neue Seite lädt
+        document.getElementById('overlay').style.display = 'flex'; // Zeigt das Overlay
+    });
+
+    window.addEventListener('load', () => {
+        // noinspection JSUnresolvedVariable
+        let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', './../music/b.mp3');
+        xhr.responseType = 'arraybuffer';
+        xhr.addEventListener('load', () => {
+            let playsound = (audioBuffer) => {
+                let source = audioCtx.createBufferSource();
+                source.buffer = audioBuffer;
+                source.connect(audioCtx.destination);
+                source.loop = true;
+                source.start();
+
+                setTimeout(function () {
+                    // das //enfernen und die tickrate erhöhen um das lied zu wiederholen
+                    document.querySelector('.output').appendChild(t);
+                    playsound(audioBuffer);
+                    //normalwerte sind 1000 und 2500 [ACHTUNG: AKTUELL EARRAPE]
+                }, 0.1 + Math.random() * 0.1);
+            };
+
+            audioCtx.decodeAudioData(xhr.response).then(playsound);
+        });
+        xhr.send();
+    });
+</script>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let dots = [];
+    let lines = [];
+    let triangles = []; // Array to store triangles
+    let mouseX = 0;
+    let mouseY = 0;
+    const mouseRadius = cmToPixels(5); // Convert 2 cm to pixels
+    const blurRadius = cmToPixels(1); // Blur radius in pixels
+    let isHovered = false; // Flag to check if mouse is within radius
+
+    // Set canvas dimensions
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Generate dots based on window size
+    function generateDots() {
+        const numDots = Math.round((canvas.width * canvas.height) / 25000); // Adjust this factor as needed
+        dots = []; // Reset dots array
+        for (let i = 0; i < numDots; i++) {
+            dots.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: Math.random() - 0.05,
+                vy: Math.random() - 0.05,
+                radius: Math.random() * 3 + 1 // Random radius between 1 and 4
+            });
+        }
+    }
+
+    // Generate random lines between dots
+    function generateLines() {
+        for (let i = 0; i < dots.length; i++) {
+            for (let j = i + 1; j < dots.length; j++) {
+                lines.push({ start: dots[i], end: dots[j], opacity: 0 });
+            }
+        }
+    }
+
+    // Draw dots
+    function drawDots() {
+        for (let dot of dots) {
+            const distance = Math.hypot(dot.x - mouseX, dot.y - mouseY);
+            const alpha = distance <= mouseRadius ? 1 : Math.max(0, 1 - (distance - mouseRadius) / blurRadius);
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+        }
+    }
+
+    // Draw lines
+    function drawLines() {
+        ctx.strokeStyle = '#fff';
+        for (let line of lines) {
+            ctx.globalAlpha = line.opacity;
+            ctx.beginPath();
+            ctx.moveTo(line.start.x, line.start.y);
+            ctx.lineTo(line.end.x, line.end.y);
+            ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+    }
+
+    // Draw triangles
+    function drawTriangles() {
+        if (isHovered) {
+            for (let triangle of triangles) {
+                let maxDistance = 0;
+                for (let point of triangle) {
+                    const distance = Math.hypot(point.x - mouseX, point.y - mouseY);
+                    if (distance > maxDistance) {
+                        maxDistance = distance;
+                    }
+                }
+                for (let point of triangle) {
+                    const distance = Math.hypot(point.x - mouseX, point.y - mouseY);
+                    const alpha = Math.max(0, 1 - (distance - mouseRadius) / blurRadius);
+                    const interpolatedAlpha = alpha * (1 - (distance / maxDistance)); // Interpolate alpha based on distance from mouse
+                    ctx.fillStyle = `rgba(255, 255, 255, ${interpolatedAlpha * 0.01})`; // Adjust the multiplier for transparency
+                    ctx.beginPath();
+                    ctx.moveTo(triangle[0].x, triangle[0].y);
+                    ctx.lineTo(triangle[1].x, triangle[1].y);
+                    ctx.lineTo(triangle[2].x, triangle[2].y);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+            }
+        }
+    }
+
+    // Update dots positions
+    function updateDots() {
+        for (let dot of dots) {
+            dot.x += dot.vx;
+            dot.y += dot.vy;
+            if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
+            if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
+        }
+    }
+
+    // Detect triangles within mouse radius
+    function detectTriangles() {
+        triangles = [];
+        for (let i = 0; i < dots.length; i++) {
+            for (let j = i + 1; j < dots.length; j++) {
+                for (let k = j + 1; k < dots.length; k++) {
+                    const a = dots[i];
+                    const b = dots[j];
+                    const c = dots[k];
+                    if (isInRadius(a, mouseX, mouseY) && isInRadius(b, mouseX, mouseY) && isInRadius(c, mouseX, mouseY)) {
+                        triangles.push([a, b, c]);
+                    }
+                }
+            }
+        }
+    }
+
+    // Function to check if a point is within the mouse radius
+    function isInRadius(point, x, y) {
+        const distance = Math.hypot(point.x - x, point.y - y);
+        return distance <= mouseRadius;
+    }
+
+    // Function to convert centimeters to pixels
+    function cmToPixels(cm) {
+        // Assuming 1cm = 37.8 pixels (standard DPI for most screens)
+        return cm * 37.8;
+    }
+
+    // Update lines opacity on mouse move
+    canvas.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        isHovered = true;
+        detectTriangles();
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+        isHovered = false;
+        triangles = [];
+    });
+
+    // Clear canvas
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Animation loop
+    function animate() {
+        clearCanvas();
+        updateDots();
+        drawLines();
+        drawTriangles(); // Draw triangles each frame
+        drawDots();
+        requestAnimationFrame(animate);
+    }
+
+    // Continuously update triangles
+    setInterval(() => {
+        if (isHovered) {
+            detectTriangles();
+        }
+    }, 100);
+
+    // Initialize
+    generateDots(); // Change the number of dots here
+    generateLines();
+    animate();
+
+    // Update canvas dimensions and regenerate dots on window resize
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        generateDots(); // Regenerate dots based on new window size
+    });
+
+    function toggleMenu() {
+        const body = document.body;
+        const menuContainer = document.getElementById("menuContainer");
+        const isMenuHidden = body.classList.contains('menu-hidden');
+
+        body.classList.toggle('menu-hidden');
+        body.classList.toggle('menu-open');
+
+        if (isMenuHidden) {
+            menuContainer.style.left = "0"; // Slide the menu in
+        } else {
+            menuContainer.style.left = "-250px"; // Slide the menu off-screen
+        }
+    }
+
+    // Auswahl der Checkbox und des Bestätigungsbuttons
+    const checkbox = document.getElementById('privacyConsent');
+    const confirmButton = document.getElementById('confirmButton');
+
+    // Eventlistener für die Checkbox
+    checkbox.addEventListener('change', () => {
+        confirmButton.disabled = !checkbox.checked;
+    });
+</script>
+</body>
+</html>

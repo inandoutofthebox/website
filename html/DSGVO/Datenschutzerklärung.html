@@ -1,0 +1,214 @@
+<!DOCTYPE html> <html lang="de"> <head> 
+  <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Datenschutzerklärung</title>
+      <style> 
+        
+        body { font-family: 'Arial', sans-serif; 
+        line-height: 1.6; 
+        margin: 0; 
+        padding: 0; 
+        background-color: #222; 
+        color: #f9f9f9; } 
+        
+        .container { max-width: 800px; 
+          width: 90%; 
+          margin: 20px auto; 
+          padding: 30px; 
+          background-color: #333; 
+          border-radius: 10px; 
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+        } h1, h2, 
+        
+        h3 { color: #f9c74f; margin-bottom: 15px; } 
+        p, ul { margin-bottom: 15px; line-height: 1.6; } 
+        ul { padding-left: 20px; } 
+        a { color: #f9c74f; text-decoration: none; } 
+        a:hover { text-decoration: underline; } 
+        .highlight { background-color: #555; padding: 5px 10px; border-radius: 5px; display: inline-block; } 
+        
+        /* Styling für den Button */
+        .overlay button {
+          background-color: #4CAF50;
+          color: white;
+          padding: 15px 30px;
+          border: 2px solid #4CAF50; /* Boxartiger Rand */
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          border-radius: 5px;
+          text-transform: uppercase;
+          transition: all 0.3s ease; /* Für sanfte Übergänge */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Leichter Schatten */
+        }
+        /* Hover-Effekt für den Button */
+        .overlay button:hover {
+          background-color: #45a049;
+          border-color: #45a049; /* Randfarbe ändert sich */
+          transform: scale(1.05); /* Button wächst leicht */
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stärkerer Schatten */
+        }
+        /* Focus-Effekt für den Button */
+        .overlay button:focus {
+          outline: none; /* Entfernt den Standardfokusrahmen */
+          box-shadow: 0 0 0 3px rgba(72, 177, 72, 0.5); /* Grüner Fokusrahmen */
+        }
+        
+        .menu-container {
+          position: fixed;
+          top: 8%;
+          left: -250px; /* Start offscreen */
+          width: 250px;
+          height: 100%;
+          background-color: #333;
+          overflow-y: auto; /* Enable vertical scrolling */
+          transition: left 0.3s ease; /* Add smooth transition */
+          z-index: 1;
+        }
+        .menu-button {
+          position: fixed;
+          top: 20px;
+          left: 20px;
+          width: 40px;
+          height: 40px;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          z-index: 2;
+          transition: left 0.3s ease; /* Add smooth transition */
+        }
+        .menu-button::before,
+        .menu-button::after {
+          content: '';
+          position: absolute;
+          width: 30px;
+          height: 4px;
+          background-color: #fff;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        .menu-button::before {
+          transform: translate(-50%, 50%) rotate(-45deg);
+        }
+        .menu-button::after {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .menu-link {
+          display: block;
+          background-color: #444;
+          color: #fff;
+          text-decoration: none;
+          padding: 15px; /* Increase button padding */
+          margin-bottom: 5px;
+          border: none;
+          cursor: pointer;
+        top:10%;
+        }
+        .menu-link:hover {
+          background-color: #555;
+        }
+      </style> 
+    
+      <body class="menu-hidden">
+        <div class="menu-container" id="menuContainer">
+            <button class="menu-button" onclick="toggleMenu()"></button>
+            <div class="dropdown-menu" id="dropdownMenu">
+            <a href="./html/Ueber_Mich.html" class="menu-link">Über Mich</a>
+                <a href="./../Links.html" class="menu-link">Links</a>
+                <a href="./../Philosophie.html" class="menu-link">Philosophie</a>
+                <a href="./Datenschutzerklärung.html" class="menu-link">Datenschutz</a>
+                <a href="https://github.com/inandoutofthebox/website" class="menu-link">Github</a>
+            </div>
+        </div>
+
+    </head> <body> <div class="container"> <h1>Datenschutzerklärung</h1>
+     <p><strong>Letzte Aktualisierung:</strong> 10. April 2025</p>... Bevor es mit dem juristischen Blabla losgeht, hier die Kurzversion für alle, die keine Lust auf Paragrafen haben: 
+<br>Diese Website ist so minimalistisch wie möglich gestaltet - nicht nur optisch, sondern auch in Sachen Datensammlung. 
+Ich selbst sammle absolut keine Daten von dir. <br>Null. Nada.
+     <br><br>
+Warum überhaupt eine Datenschutzerklärung? 
+<br>Nun, meine Website läuft über zwei externe Dienste:
+GitHub Pages (für das Hosting) und Cloudflare (für die Sicherheit). 
+Diese beiden Unternehmen sehen technisch bedingt ein paar Daten von dir, etwa deine IP-Adresse und deinen Browser-Typ. 
+     <br>
+     <br>Ich selbst sehe diese Daten nicht, habe keinen Zugriff darauf und interessiere mich ehrlich gesagt auch nicht dafür, 
+     wer meine Website besucht.
+     <br>
+     <br>In der folgenden Erklärung findest du alle rechtlich notwendigen Details. Falls du Fragen hast, schreib mir einfach eine Mail. Und jetzt: Viel Spaß auf meiner Website!
+     <br>
+        <h2>1. Allgemeine Hinweise und Pflichtinformationen</h2>
+    
+        <h3>1.1 Verantwortliche Person</h3>
+        <p>David Schöffmann<br>
+        <br>
+        69123 Heidelberg<br>
+        Baden-Württemberg<br>
+        Deutschland</p>
+        <p>E-Mail: <a href="mailto:[Ihre E-Mail-Adresse]" class="highlight">david-schoeffmann@gmx.de</a><br>
+        Website:<a href="https://david-schoeffmann.de"> https://david-schoeffmann.de</a></p>
+    
+        <h3>1.2 Klarer Hinweis zu den technischen Einschränkungen</h3>
+        <p>Diese Website ist eine rein statische Informationsseite ohne eigene Datenverarbeitung. Ich betreibe <strong>keine eigenen Server</strong> und habe <strong>keinerlei technische Möglichkeiten</strong>, irgendwelche Daten von Besuchern selbst zu erheben, zu speichern oder zu verarbeiten. Die Website wird ausschließlich über Dienste von Drittanbietern (GitHub Pages und Cloudflare) bereitgestellt und verwaltet.</p>
+        <p><strong>Wichtiger Hinweis:</strong> Durch die bloße Nutzung meiner Website werden keinerlei personenbezogene Daten durch mich erhoben oder verarbeitet. Jegliche Datenverarbeitung erfolgt ausschließlich durch die nachfolgend genannten Drittanbieter, auf deren Datenverarbeitungspraktiken ich keinen Einfluss habe.</p>
+    
+        <h2>2. Dienste von Drittanbietern</h2>
+    
+        <h3>2.1 GitHub Pages (Hosting-Provider)</h3>
+        <p>Meine Website wird auf der Plattform GitHub Pages gehostet, einem Dienst der GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Wenn Sie meine Website besuchen, stellen Sie eine direkte Verbindung zu den Servern von GitHub her.</p>
+        <p><strong>Ich habe keinen Zugriff auf die Server von GitHub</strong> und keine Möglichkeit, die dort stattfindende Datenverarbeitung zu steuern, zu überwachen oder zu beeinflussen. Für Informationen darüber, welche Daten GitHub bei der Nutzung von GitHub Pages verarbeitet, wie lange diese gespeichert werden und zu welchen Zwecken, verweise ich auf die Datenschutzerklärung von GitHub:</p>
+        <p><a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" class="highlight" target="_blank">GitHub Datenschutzerklärung</a></p>
+    
+        <h3>2.2 Cloudflare (CDN und Sicherheitsdienst)</h3>
+        <p>Meine Website verwendet Dienste von Cloudflare Inc., 101 Townsend St, San Francisco, CA 94107, USA, als Content Delivery Network (CDN) und zum Schutz vor Angriffen.</p>
+        <p><strong>Ich habe keinen Zugriff auf die Server von Cloudflare</strong> und keine Möglichkeit, die dort stattfindende Datenverarbeitung zu steuern, zu überwachen oder zu beeinflussen. Für Informationen darüber, welche Daten Cloudflare verarbeitet, wie lange diese gespeichert werden und zu welchen Zwecken, verweise ich auf die Datenschutzerklärung von Cloudflare:</p>
+        <p><a href="https://www.cloudflare.com/de-de/privacypolicy/" class="highlight" target="_blank">Cloudflare Datenschutzerklärung</a></p>
+    
+        <h2>3. Haftungsausschluss für die Datenverarbeitung durch Drittanbieter</h2>
+        <p>Ich distanziere mich ausdrücklich von jeglicher Datenverarbeitung, die durch GitHub und Cloudflare durchgeführt wird. Da ich weder Einfluss auf die Art und den Umfang der Datenverarbeitung durch diese Drittanbieter habe, noch auf die Speicherdauer oder die technischen Sicherheitsmaßnahmen, kann und werde ich keine Verantwortung für deren Datenverarbeitungspraktiken übernehmen.</p>
+        <p>Jegliche Auskunftsersuchen, Löschanfragen oder sonstige Begehren im Zusammenhang mit der Verarbeitung personenbezogener Daten müssen direkt an die jeweiligen Drittanbieter gerichtet werden.</p>
+    
+        <h2>4. Cookies und Tracking</h2>
+        <p>Ich selbst setze auf dieser Website <strong>keine Cookies</strong> ein und betreibe <strong>kein Tracking</strong> von Besuchern. Die von mir genutzte Website enthält keine Analysetools, keine Social-Media-Plugins und keine sonstigen Funktionen, die personenbezogene Daten erheben könnten.</p>
+        <p>Die Drittanbieter GitHub und Cloudflare können jedoch eigene Cookies setzen oder andere Tracking-Technologien einsetzen. Da ich keinen Einfluss auf diese Technologien habe, verweise ich auf die jeweiligen Datenschutzerklärungen der Anbieter.</p>
+    
+        <h2>5. Alternative Nutzungsmöglichkeiten</h2>
+        <p>Wenn Sie Bedenken bezüglich der Datenverarbeitung durch die genannten Drittanbieter haben, können Sie meine Website auch über das Tor-Netzwerk oder einen VPN-Dienst besuchen, um Ihre Identität zu verschleiern.</p>
+    
+        <h2>6. Rechtliche Grundlagen</h2>
+        <p>Die Website dient ausschließlich der Information und stellt ein reines Informationsangebot dar. Ich erhebe und verarbeite selbst keine personenbezogenen Daten der Besucher, weshalb durch mich keine Datenverarbeitung im Sinne der DSGVO stattfindet.</p>
+    
+        <h2>7. Ihre Rechte</h2>
+        <p>Da ich selbst keine personenbezogenen Daten verarbeite, kann ich auch keine Auskunfts-, Berichtigungs-, Lösch- oder sonstigen Ansprüche gemäß DSGVO erfüllen. Sollten Sie der Meinung sein, dass Ihre personenbezogenen Daten im Zusammenhang mit meiner Website verarbeitet werden, wenden Sie sich bitte direkt an die oben genannten Drittanbieter.</p>
+    
+        <h2>8. Änderungen dieser Datenschutzerklärung</h2>
+        <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand April 2025.</p>
+        <p>Aufgrund neuer gesetzlicher oder behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf dieser Website eingesehen werden.</p>
+    </div>
+    </body>
+    
+    <script> 
+
+      function toggleMenu() {
+          const body = document.body;
+          const menuContainer = document.getElementById("menuContainer");
+      
+          body.classList.toggle('menu-hidden');
+          if (body.classList.contains('menu-hidden')) {
+              menuContainer.style.left = "-250px"; // Slide the menu off-screen
+          } else {
+              menuContainer.style.left = "0"; // Slide the menu in
+          }
+      }
+      
+        // Auswahl der Checkbox und des Bestätigungsbuttons
+          const checkbox = document.getElementById('privacyConsent');
+          const confirmButton = document.getElementById('confirmButton');
+      
+          // Eventlistener für die Checkbox
+          checkbox.addEventListener('change', () => {
+              confirmButton.disabled = !checkbox.checked;
+          });
+      
+      </script>
+
+    </html>

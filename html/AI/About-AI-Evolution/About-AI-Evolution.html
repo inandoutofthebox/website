@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#121212">
+    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI-Entwicklung: Umfassende Chronik und Analysen (1950-2025)</title>
+    <!-- Chart.js mit Erweiterungen für präzisere Visualisierungen -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <!-- D3.js für komplexe Visualisierungen -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Font Awesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header-Bereich mit Titel und Einführung -->
+        <header class="header">
+            <h1 class="main-title">Entwicklung der Künstlichen Intelligenz</h1>
+            <p class="subtitle">Exponentielles Wachstum und historische Meilensteine (1950-2025)</p>
+            <p class="intro-text">
+                Von den theoretischen Grundlagen durch Alan Turing bis zur Ära der Multimodalen KI und 
+                agentenbasierten Systeme - entdecken Sie die facettenreiche Geschichte der künstlichen Intelligenz, 
+                deren Wachstum exponentiell beschleunigt und unsere Zukunft maßgeblich prägen wird.
+            </p>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-number">25.000.000×</span>
+                    <span class="stat-label">Leistungszuwachs seit 1950</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1,8 Bill.</span>
+                    <span class="stat-label">Parameter in aktuellen Modellen</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">93,7%</span>
+                    <span class="stat-label">MMLU-Score in 2025</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Navigationsbereich -->
+        <nav class="nav">
+            <button class="nav-button active" data-target="growth-charts">Wachstumsdaten</button>
+            <button class="nav-button" data-target="timeline-section">Zeitstrahl</button>
+            <button class="nav-button" data-target="models-section">Neueste Modelle</button>
+            <button class="nav-button" data-target="phases-section">KI-Phasen</button>
+            <button class="nav-button" data-target="trends-section">KI-Trends 2025</button>
+            <button class="nav-button" data-target="benchmarks-section">Benchmarks</button>
+        </nav>
+        
+        <!-- Hauptabschnitt: Exponentielles Wachstum der KI -->
+        <section id="growth-charts" class="section">
+            <h2 class="section-title">Exponentielles Wachstum der KI</h2>
+            
+            <!-- Hauptgraph: Exponentielles Wachstum -->
+            <div class="chart-container chart-container-full">
+                <div class="chart-title">Exponentieller Anstieg der KI-Fähigkeiten (1950-2025)</div>
+                <canvas id="aiGrowthChart"></canvas>
+                <div class="chart-description">
+                    <p>Dieser Graph zeigt das dramatische exponentielle Wachstum der KI-Leistungsfähigkeit seit 1950. Die logarithmische Skala verdeutlicht die extreme Steigerung, die linear nicht darstellbar wäre.</p>
+                    <div class="milestone-markers">
+                        <div class="milestone">
+                            <span class="milestone-dot" style="background-color: rgba(255, 99, 132, 1);"></span>
+                            <span class="milestone-text">1956: Dartmouth-Konferenz, Geburt des Begriffs "KI"</span>
+                        </div>
+                        <div class="milestone">
+                            <span class="milestone-dot" style="background-color: rgba(255, 159, 64, 1);"></span>
+                            <span class="milestone-text">1966: ELIZA - Der erste Chatbot</span>
+                        </div>
+                        <div class="milestone">
+                            <span class="milestone-dot" style="background-color: rgba(255, 205, 86, 1);"></span>
+                            <span class="milestone-text">1997: Deep Blue besiegt Kasparov</span>
+                        </div>
+                        <div class="milestone">
+                            <span class="milestone-dot" style="background-color: rgba(75, 192, 192, 1);"></span>
+                            <span class="milestone-text">2012: AlexNet & Deep-Learning-Revolution</span>
+                        </div>
+                        <div class="milestone">
+                            <span class="milestone-dot" style="background-color: rgba(153, 102, 255, 1);"></span>
+                            <span class="milestone-text">2017: Transformer-Architektur</span>
+                        </div>
+                        <div class="milestone">
+                            <span class="milestone-dot" style="background-color: rgba(255, 99, 132, 1);"></span>
+                            <span class="milestone-text">2022: ChatGPT & Generative KI-Revolution</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Weitere Graphen-Grid -->
+            <div class="chart-grid">
+                <!-- Graph 2: KI-Modellgrößen -->
+                <div class="chart-container chart-container-half">
+                    <div class="chart-title">Wachstum der KI-Modellgrößen (2001-2025)</div>
+                    <canvas id="modelSizeChart"></canvas>
+                    <div class="chart-description">
+                        <p>Die Anzahl der Parameter in KI-Modellen ist von wenigen Tausend auf mehrere Billionen angestiegen.</p>
+                        <div class="model-size-highlights">
+                            <div class="model-highlight">
+                                <span class="highlight-year">2020:</span> GPT-3 mit 175 Mrd. Parametern
+                            </div>
+                            <div class="model-highlight">
+                                <span class="highlight-year">2022:</span> PaLM mit 540 Mrd. Parametern
+                            </div>
+                            <div class="model-highlight">
+                                <span class="highlight-year">2025:</span> Gemini Ultra 2 mit 1,8 Billionen Parametern
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Graph 3: KI-Forschungspublikationen -->
+                <div class="chart-container chart-container-half">
+                    <div class="chart-title">KI-Forschungspublikationen pro Jahr (1990-2025)</div>
+                    <canvas id="researchChart"></canvas>
+                    <div class="chart-description">
+                        <p>Die Anzahl wissenschaftlicher Publikationen im Bereich der KI spiegelt das wachsende Interesse und die Investitionen wider. Seit 2012 hat sich die Anzahl der jährlichen Veröffentlichungen mehr als verzehnfacht.</p>
+                        <p>In 2025 wurden bereits über 520.000 wissenschaftliche Arbeiten zum Thema KI veröffentlicht, was einem durchschnittlichen Wachstum von 17% pro Jahr seit 2010 entspricht.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Weitere Graphen-Grid -->
+            <div class="chart-grid">
+                <!-- Graph 4: Rechenaufwand für KI-Training -->
+                <div class="chart-container chart-container-half">
+                    <div class="chart-title">Rechenaufwand für KI-Training (2012-2025)</div>
+                    <canvas id="computeChart"></canvas>
+                    <div class="chart-description">
+                        <p>Der Rechenaufwand für das Training von KI-Modellen ist exponentiell angestiegen.</p>
+                        <table class="mini-table">
+                            <tr>
+                                <th>Modell</th>
+                                <th>GPU-Stunden</th>
+                                <th>CO₂-Äquivalent</th>
+                            </tr>
+                            <tr>
+                                <td>GPT-3 (2020)</td>
+                                <td>355.000</td>
+                                <td>552 t</td>
+                            </tr>
+                            <tr>
+                                <td>GPT-4 (2023)</td>
+                                <td>15.000.000</td>
+                                <td>14.680 t</td>
+                            </tr>
+                            <tr>
+                                <td>Grok 3 (2025)</td>
+                                <td>200.000.000</td>
+                                <td>196.000 t</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Graph 5: KI-Benchmark-Performance -->
+                <div class="chart-container chart-container-half">
+                    <div class="chart-title">KI-Performance in standardisierten Benchmarks (2018-2025)</div>
+                    <canvas id="benchmarkChart"></canvas>
+                    <div class="chart-description">
+                        <p>Die Leistung von KI-Modellen in standardisierten Tests wie MMLU (Massive Multitask Language Understanding) übertrifft mittlerweile menschliche Experten deutlich.</p>
+                        <div class="benchmark-note">
+                            <i class="fas fa-user-graduate"></i> Menschlicher Experte: 89,8%
+                        </div>
+                        <div class="benchmark-note highlight">
+                            <i class="fas fa-robot"></i> Gemini Ultra 2 (2025): 93,7%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Letzte Graphen-Grid -->
+            <div class="chart-grid">
+                <!-- Graph 6: Trainingseffizienz -->
+                <div class="chart-container chart-container-half">
+                    <div class="chart-title">KI-Trainingseffizienz: Token pro Parameter (2018-2025)</div>
+                    <canvas id="efficiencyChart"></canvas>
+                    <div class="chart-description">
+                        <p>Moderne Modelle werden nicht nur größer, sondern auch effizienter. DeepSeek V3 (2024) erreichte mit 85 Tokens pro Parameter eine neue Höchstmarke in der Datennutzungseffizienz, was die Software-Architekturfortschritte verdeutlicht.</p>
+                    </div>
+                </div>
+                
+                <!-- Graph 7: Entwicklung der Kontextlänge -->
+                <div class="chart-container chart-container-half">
+                    <div class="chart-title">Entwicklung der KI-Kontextlänge (2018-2025)</div>
+                    <canvas id="contextChart"></canvas>
+                    <div class="chart-description">
+                        <p>Die Fähigkeit von KI-Modellen, längere Kontexte zu verarbeiten, hat sich dramatisch verbessert. Von wenigen tausend Tokens in 2018 bis zu 2 Millionen Tokens in GPT-4.5 Turbo (2025).</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-label">Verbesserung seit 2018</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 97.6%;"></div>
+                            </div>
+                            <div class="progress-value">+97.600%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Zeitleiste der KI-Entwicklung -->
+        <section id="timeline-section" class="section" style="display: none;">
+            <h2 class="section-title">Chronologie der KI-Entwicklung</h2>
+            
+            <div class="timeline-eras">
+                <div class="era era-1">1950-1975: Gründungsjahre</div>
+                <div class="era era-2">1976-1995: Expertensysteme & KI-Winter</div>
+                <div class="era era-3">1996-2011: Renaissance der KI</div>
+                <div class="era era-4">2012-2021: Deep-Learning-Revolution</div>
+                <div class="era era-5">2022-2025: Generative KI & Multimodalität</div>
+            </div>
+            
+            <div class="timeline">
+                <!-- Erster Eintrag -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">1936</span>
+                        <h3 class="timeline-entry-title">Turingmaschine</h3>
+                        <p class="timeline-description">
+                            Alan Turing entwickelt die Theorie der Turingmaschine in seiner Arbeit "On Computable Numbers". 
+                            Dieses mathematische Modell legt den theoretischen Grundstein für die moderne Informatik und 
+                            später auch für das Konzept der künstlichen Intelligenz.
+                        </p>
+                        <div class="timeline-impact">
+                            <i class="fas fa-bolt"></i> Fundamentale Auswirkung auf theoretische Informatik
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Weitere Zeitleisteneinträge -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">1956</span>
+                        <h3 class="timeline-entry-title">Dartmouth-Konferenz</h3>
+                        <p class="timeline-description">
+                            Der Begriff "Künstliche Intelligenz" wird von John McCarthy geprägt. Bei der historischen 
+                            Dartmouth-Konferenz treffen sich führende Wissenschaftler, darunter Marvin Minsky, Claude Shannon 
+                            und Allen Newell, um das neue Forschungsgebiet zu definieren.
+                        </p>
+                        <div class="timeline-quote">
+                            "Jeder Aspekt des Lernens oder jedes andere Merkmal der Intelligenz kann so präzise beschrieben werden, dass eine Maschine geschaffen werden kann, die ihn simuliert." - Dartmouth-Proposal
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2012</span>
+                        <h3 class="timeline-entry-title">Deep Learning-Durchbruch</h3>
+                        <p class="timeline-description">
+                            AlexNet, ein tiefes Convolutional Neural Network (CNN) entwickelt von Alex Krizhevsky, Ilya Sutskever 
+                            und Geoffrey Hinton, gewinnt den ImageNet-Wettbewerb und reduziert die Fehlerrate bei der Bilderkennung 
+                            dramatisch von 26% auf 15%.
+                        </p>
+                        <div class="timeline-image">
+                            <img src="https://via.placeholder.com/300x150?text=AlexNet+Architektur" alt="AlexNet Architektur">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2022</span>
+                        <h3 class="timeline-entry-title">ChatGPT-Revolution</h3>
+                        <p class="timeline-description">
+                            OpenAI veröffentlicht ChatGPT, ein auf GPT-3.5 basierendes Konversationsmodell, das innerhalb weniger 
+                            Monate 100 Millionen Nutzer erreicht - schneller als jede andere Verbraucheranwendung in der Geschichte.
+                        </p>
+                        <div class="timeline-stats">
+                            <div class="stat">
+                                <span class="stat-value">100M+</span>
+                                <span class="stat-name">Nutzer in 2 Monaten</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">1,5M+</span>
+                                <span class="stat-name">Entwickler-API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2025</span>
+                        <h3 class="timeline-entry-title">Hybrid-Reasoning und AGI-Fortschritte</h3>
+                        <p class="timeline-description">
+                            Claude 3.7 Sonnet führt Hybrid-Reasoning ein - die Fähigkeit, zwischen schnellen Antworten und tiefgehender 
+                            Analyse zu wechseln. Gemini Ultra 2 erreicht 93,7% auf dem MMLU-Benchmark und übertrifft damit menschliche Experten deutlich.
+                        </p>
+                        <div class="timeline-impact high-impact">
+                            <i class="fas fa-exclamation-circle"></i> Kritischer Fortschritt Richtung AGI
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Neueste KI-Modelle 2024-2025 -->
+        <section id="models-section" class="section" style="display: none;">
+            <h2 class="section-title">Die neuesten KI-Modelle (2024-2025)</h2>
+            
+            <div class="models-overview">
+                <div class="circle-graph">
+                    <canvas id="modelComparisonChart"></canvas>
+                </div>
+                <div class="models-text">
+                    <p>Die KI-Entwicklung hat in den Jahren 2024-2025 eine bisher nicht dagewesene Dynamik erreicht. Die neuesten Modelle zeigen dramatische Verbesserungen in allen Leistungsdimensionen und bewegen sich in vielen Bereichen über menschliches Expertenniveau.</p>
+                    <div class="key-stats">
+                        <div class="key-stat">
+                            <i class="fas fa-microchip"></i>
+                            <span class="stat-value">1,8 Billionen</span>
+                            <span class="stat-label">Parameter (Gemini Ultra 2)</span>
+                        </div>
+                        <div class="key-stat">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span class="stat-value">60 Tokens/s</span>
+                            <span class="stat-label">Inferenzgeschwindigkeit (DeepSeek V3)</span>
+                        </div>
+                        <div class="key-stat">
+                            <i class="fas fa-server"></i>
+                            <span class="stat-value">100.000</span>
+                            <span class="stat-label">GPUs für Grok 3 Training</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid mit Modellkarten -->
+            <div class="models-grid">
+                <!-- DeepSeek V3 -->
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3 class="model-title">DeepSeek V3</h3>
+                        <span class="model-date">Dezember 2024</span>
+                    </div>
+                    <div class="model-chart">
+                        <canvas id="deepseekChart"></canvas>
+                    </div>
+                    <p class="model-description">
+                        DeepSeek V3 nutzt eine wegweisende MoE-Architektur (Mixture of Experts) mit 671 Milliarden Gesamtparametern, von denen nur 37 Milliarden gleichzeitig aktiv sind. Dies führt zu beispielloser Effizienz bei überragender Leistung.
+                    </p>
+                    <div class="model-features">
+                        <span class="feature"><i class="fas fa-microchip"></i> MoE mit 671 Mrd. Parametern</span>
+                        <span class="feature"><i class="fas fa-bolt"></i> 37 Mrd. aktive Parameter</span>
+                        <span class="feature"><i class="fas fa-database"></i> 14,8 Billionen Tokens Training</span>
+                        <span class="feature"><i class="fas fa-tachometer-alt"></i> 60 Tokens/Sekunde</span>
+                        <span class="feature"><i class="fas fa-code-branch"></i> Open-Source</span>
+                    </div>
+                </div>
+                
+                <!-- Grok 3 -->
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3 class="model-title">Grok 3 (xAI)</h3>
+                        <span class="model-date">Februar 2025</span>
+                    </div>
+                    <div class="model-chart">
+                        <canvas id="grokChart"></canvas>
+                    </div>
+                    <p class="model-description">
+                        Elon Musks xAI hat mit Grok 3 Maßstäbe beim Trainingsaufwand gesetzt. Das Modell wurde mit 200 Millionen GPU-Stunden auf dem "Colossus"-Supercomputer mit 100.000 GPUs trainiert und setzt auf synthetische Datensätze.
+                    </p>
+                    <div class="model-features">
+                        <span class="feature"><i class="fas fa-rocket"></i> 10x mehr Rechenleistung als Grok 2</span>
+                        <span class="feature"><i class="fas fa-server"></i> Colossus-Supercomputer mit 100.000 GPUs</span>
+                        <span class="feature"><i class="fas fa-brain"></i> Synthetische Datensätze</span>
+                        <span class="feature"><i class="fas fa-sync"></i> Selbstkorrekturmechanismen</span>
+                    </div>
+                </div>
+                
+                <!-- Gemini Ultra 2 -->
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3 class="model-title">Gemini Ultra 2</h3>
+                        <span class="model-date">März 2025</span>
+                    </div>
+                    <div class="model-chart">
+                        <canvas id="geminiChart"></canvas>
+                    </div>
+                    <p class="model-description">
+                        Google DeepMinds Gemini Ultra 2 erreicht mit seiner revolutionären Pathways 2.0 Architektur und 1,8 Billionen Parametern neue Höchstwerte in allen Benchmarks und ist das erste Modell mit vollständig integriertem Multimodal-Verständnis.
+                    </p>
+                    <div class="model-features">
+                        <span class="feature"><i class="fas fa-network-wired"></i> Pathways 2.0 Architektur</span>
+                        <span class="feature"><i class="fas fa-microchip"></i> 1,8 Billionen Parameter</span>
+                        <span class="feature"><i class="fas fa-film"></i> Nahtlose Video-Audio-Text-Integration</span>
+                        <span class="feature"><i class="fas fa-chart-bar"></i> 93,7% auf MMLU-Benchmark</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Neue KI-Trends 2025 -->
+        <section id="trends-section" class="section" style="display: none;">
+            <h2 class="section-title">Neue KI-Entwicklungen für 2025</h2>
+            
+            <div class="trends-overview">
+                <p class="trends-intro">
+                    Das Jahr 2025 markiert einen entscheidenden Wendepunkt in der KI-Entwicklung. Neben quantitativen Verbesserungen bei Modellgrößen und Benchmarks erleben wir qualitative Veränderungen in der Art und Weise, wie KI-Systeme konzipiert und eingesetzt werden. Die folgenden Trends prägen die KI-Landschaft im Jahr 2025 und darüber hinaus.
+                </p>
+            </div>
+            
+            <!-- Trends-Container mit Karten für jeden Trend -->
+            <div class="trends-container">
+                <!-- Agentenbasierte KI -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-robot"></i> Agentenbasierte KI (Agentic AI)</h3>
+                    </div>
+                    <p class="trend-description">
+                        KI-Agenten entwickeln sich von einfachen dialogorientierten Systemen zu vollständig autonomen Helfern, die selbstständig komplexe Aufgaben erledigen können.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Mehrstufige Arbeitsabläufe selbstständig vom Anfang bis zum Abschluss durchführen</li>
+                        <li><i class="fas fa-check-circle"></i> Eigenständig rechtsverbindliche Transaktionen wie Flugbuchungen vornehmen können</li>
+                        <li><i class="fas fa-check-circle"></i> Von bloßer Interaktion zu aktiver Handlung übergehen</li>
+                        <li><i class="fas fa-check-circle"></i> In Multi-Agenten-Systemen zusammenarbeiten, um komplexere Aufgaben zu bewältigen</li>
+                        <li><i class="fas fa-check-circle"></i> Hyperpersonalisiert arbeiten und immer besser auf individuelle Bedürfnisse eingehen</li>
+                    </ul>
+                </div>
+                
+                <!-- Fortgeschrittene Modellarchitekturen -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-microchip"></i> Fortgeschrittene Modellarchitekturen</h3>
+                    </div>
+                    <p class="trend-description">
+                        Die KI-Modellentwicklung ändert ihren Fokus von größeren zu effizienteren und spezialisierten Modellen.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Statt immer größerer Modelle entstehen effizientere, kleinere Modelle mit vergleichbarer Leistung</li>
+                        <li><i class="fas fa-check-circle"></i> Llama 3.3 erreicht mit nur 70 Billionen Parametern die Qualität von Modellen mit 405 Billionen Parametern</li>
+                        <li><i class="fas fa-check-circle"></i> Fortschrittliche Modelle wie OpenAI o1 können komplexe Probleme mit logischen Schritten lösen</li>
+                        <li><i class="fas fa-check-circle"></i> Spezialisierte Modelle verbrauchen weniger Energie und arbeiten präziser</li>
+                    </ul>
+                </div>
+                
+                <!-- Multimodale Intelligenz -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-film"></i> Multimodale Intelligenz</h3>
+                    </div>
+                    <p class="trend-description">
+                        2025 wird die nahtlose Integration verschiedener Datentypen zum Standard für fortschrittliche KI-Systeme.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Virtuelle Assistenten, die Text, Bilder, Audio und Video gleichzeitig verarbeiten können</li>
+                        <li><i class="fas fa-check-circle"></i> Fähigkeit, Tonfall, Mimik und den Kontext der Umgebung zu erfassen</li>
+                        <li><i class="fas fa-check-circle"></i> Bis 2027 werden voraussichtlich 40% der generativen KI-Lösungen multimodal sein (von nur 1% in 2023)</li>
+                        <li><i class="fas fa-check-circle"></i> Besonders wertvoll im Gesundheitswesen für komplexe medizinische Diagnosen</li>
+                    </ul>
+                </div>
+                
+                <!-- KI als neue Benutzeroberfläche -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-desktop"></i> KI als neue Benutzeroberfläche</h3>
+                    </div>
+                    <p class="trend-description">
+                        Die Art, wie wir mit Technologie interagieren, verändert sich grundlegend durch KI-basierte Interfaces.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Wandel von herkömmlichen Benutzeroberflächen zu absichtsbasierter, natürlichsprachlicher Kommunikation</li>
+                        <li><i class="fas fa-check-circle"></i> KI-Assistenten werden zur primären Schnittstelle für Systeminteraktionen</li>
+                        <li><i class="fas fa-check-circle"></i> Grenzen zwischen Frontend, Backend, Browser und Anwendungen verschwimmen</li>
+                        <li><i class="fas fa-check-circle"></i> Power-User arbeiten weiterhin mit Spezialschnittstellen, während der Mainstream dialogbasierte Interfaces bevorzugt</li>
+                    </ul>
+                </div>
+                
+                <!-- Selbstverbessernde Systeme -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-sync-alt"></i> Selbstverbessernde Systeme</h3>
+                    </div>
+                    <p class="trend-description">
+                        KI-Systeme werden selbstständiger und optimieren ihre eigene Leistung kontinuierlich.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Kontinuierliche Lernschleifen ermöglichen Selbstverbesserung in Echtzeit</li>
+                        <li><i class="fas fa-check-circle"></i> Minimale menschliche Aufsicht notwendig</li>
+                        <li><i class="fas fa-check-circle"></i> Eingesetzt für Betrugserkennung in Echtzeit und adaptive Cybersicherheit</li>
+                        <li><i class="fas fa-check-circle"></i> Hybride Systeme kombinieren Suchen und Lernen, um neue Lösungswege für unbekannte Aufgaben zu finden</li>
+                    </ul>
+                </div>
+                
+                <!-- Domänenspezifische KI-Architekturen -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-sitemap"></i> Domänenspezifische KI-Architekturen</h3>
+                    </div>
+                    <p class="trend-description">
+                        Die Branche bewegt sich weg von allgemeinen KI-Modellen hin zu spezialisierten Lösungen.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Fein abgestimmte Modelle für spezifische Branchen wie Finanzen, Klimamodellierung und Genomforschung</li>
+                        <li><i class="fas fa-check-circle"></i> Höhere Präzision und Effizienz in spezifischen Anwendungsbereichen</li>
+                        <li><i class="fas fa-check-circle"></i> Bessere Anpassung an regulatorische Anforderungen bestimmter Branchen</li>
+                    </ul>
+                </div>
+                
+                <!-- Edge AI und dezentrale Intelligenz -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-network-wired"></i> Edge AI und dezentrale Intelligenz</h3>
+                    </div>
+                    <p class="trend-description">
+                        Die Verarbeitung rückt näher an die Datenquelle, was Latenz reduziert und Privatsphäre verbessert.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Lokale Datenverarbeitung auf Geräten statt Cloud-Abhängigkeit</li>
+                        <li><i class="fas fa-check-circle"></i> Echtzeit-Fähigkeiten für Umgebungen mit begrenzter Konnektivität</li>
+                        <li><i class="fas fa-check-circle"></i> Einsatz in abgelegenen Gesundheitseinrichtungen und intelligenten Fertigungsanlagen</li>
+                        <li><i class="fas fa-check-circle"></i> Reduzierung von Latenz und Datenübertragungskosten</li>
+                    </ul>
+                </div>
+                
+                <!-- Neue Herausforderungen bei Trainingsdaten -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-exclamation-triangle"></i> Neue Herausforderungen bei Trainingsdaten</h3>
+                    </div>
+                    <p class="trend-description">
+                        Das KI-Ökosystem steht vor einem Paradoxon durch KI-generierte Inhalte.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Die Qualität der Trainingsdaten wird durch KI-generierte Inhalte verwässert</li>
+                        <li><i class="fas fa-check-circle"></i> 2024 wurden bereits 57% aller neuen Daten durch KI-Systeme generiert</li>
+                        <li><i class="fas fa-check-circle"></i> Könnte zu einem "Plateau" in der KI-Qualität führen, wenn Modelle zunehmend von KI-generierten Daten statt von menschlicher Kreativität lernen</li>
+                    </ul>
+                </div>
+                
+                <!-- Wissenschaftliche KI-Agenten -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-flask"></i> Wissenschaftliche KI-Agenten</h3>
+                    </div>
+                    <p class="trend-description">
+                        Forschung wird durch spezialisierte KI-Assistenten revolutioniert.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Wichtige Werkzeuge für die wissenschaftliche Forschung</li>
+                        <li><i class="fas fa-check-circle"></i> Beschleunigung der Medikamentenentwicklung</li>
+                        <li><i class="fas fa-check-circle"></i> Co-Creation-Prozess zwischen generativer KI und menschlicher Expertise</li>
+                    </ul>
+                </div>
+                
+                <!-- Robotersteuerung und physische Interaktion -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-robot"></i> Robotersteuerung und physische Interaktion</h3>
+                    </div>
+                    <p class="trend-description">
+                        Die Verbindung zwischen KI und physischer Welt intensiviert sich.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Steuerung von Robotern und komplexen Anlagen über natürliche Sprache</li>
+                        <li><i class="fas fa-check-circle"></i> Integration von KI in industrielle Automatisierung</li>
+                        <li><i class="fas fa-check-circle"></i> Wachstum des weltweiten Robotikmarktes bis 2030 um über 20%</li>
+                    </ul>
+                </div>
+                
+                <!-- Synthetische Daten und Simulationen -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-database"></i> Synthetische Daten und Simulationen</h3>
+                    </div>
+                    <p class="trend-description">
+                        Synthetische Daten werden vielseitiger eingesetzt für KI-Training.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Training von KI für Grenzfälle und Simulation seltener oder gefährlicher Ereignisse</li>
+                        <li><i class="fas fa-check-circle"></i> Besonders wertvoll für autonomes Fahren zur Modellierung von Extremsituationen</li>
+                        <li><i class="fas fa-check-circle"></i> Ermöglichen das Training in Szenarien, die in der Realität zu gefährlich wären</li>
+                    </ul>
+                </div>
+                
+                <!-- Quantencomputer KI -->
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <h3 class="trend-title"><i class="fas fa-atom"></i> Quantencomputer KI</h3>
+                    </div>
+                    <p class="trend-description">
+                        Die Kombination aus Quantencomputing und KI verspricht revolutionäre Fortschritte.
+                    </p>
+                    <ul class="trend-features">
+                        <li><i class="fas fa-check-circle"></i> Quantencomputer können bestimmte KI-Algorithmen exponentiell beschleunigen</li>
+                        <li><i class="fas fa-check-circle"></i> Potenzial für Durchbrüche bei komplexen Optimierungsproblemen</li>
+                        <li><i class="fas fa-check-circle"></i> Ermöglicht die Simulation von Quantensystemen für die Materialwissenschaft</li>
+                        <li><i class="fas fa-check-circle"></i> Erste kommerzielle Anwendungen sind in der Finanzmodellierung und Pharmaforschung zu erwarten</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Phasen der KI-Entwicklung -->
+        <section id="phases-section" class="section" style="display: none;">
+            <h2 class="section-title">Entwicklungsphasen der Künstlichen Intelligenz</h2>
+            
+            <!-- Evolutionspfad der KI mit verbesserten Interaktionen -->
+            <div class="evolution-path">
+                <div class="evolution-node active" data-phase="1" onclick="switchPhase(1)">
+                    <div class="node-content">ANI</div>
+                    <div class="node-label">Narrow AI</div>
+                </div>
+                <div class="evolution-connector"></div>
+                <div class="evolution-node" data-phase="2" onclick="switchPhase(2)">
+                    <div class="node-content">AGI</div>
+                    <div class="node-label">General AI</div>
+                </div>
+                <div class="evolution-connector"></div>
+                <div class="evolution-node" data-phase="3" onclick="switchPhase(3)">
+                    <div class="node-content">ASI</div>
+                    <div class="node-label">Superintelligence</div>
+                </div>
+            </div>
+            
+            <div class="evolution-details">
+                <div class="evolution-detail active" data-phase="1" id="ani-details">
+                    <h3>Artificial Narrow Intelligence (ANI)</h3>
+                    <p>Spezialisierte KI-Systeme, die in einem begrenzten Anwendungsbereich funktionieren. Alle heutigen KI-Modelle fallen in diese Kategorie, auch wenn fortgeschrittene Systeme wie GPT-4 oder Claude 3.7 in vielen verschiedenen Domänen leistungsfähig sind.</p>
+                    
+                    <div class="phase-details-grid">
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-check-circle"></i> Aktueller Stand</h4>
+                            <p>Wir befinden uns aktuell im ANI-Stadium. Selbst die fortschrittlichsten Modelle sind auf bestimmte Aufgabentypen beschränkt.</p>
+                        </div>
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-cogs"></i> Merkmale</h4>
+                            <p>Kann nur spezifische Aufgaben ausführen, für die sie trainiert wurde. Besitzt kein echtes Verständnis oder Bewusstsein.</p>
+                        </div>
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-lightbulb"></i> Beispiele</h4>
+                            <div class="examples">
+                                <span class="example">Bildklassifizierung</span>
+                                <span class="example">Spracherkennung</span>
+                                <span class="example">Übersetzung</span>
+                                <span class="example">Schachcomputer</span>
+                                <span class="example">Empfehlungssysteme</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evolution-detail" data-phase="2" id="agi-details">
+                    <h3>Artificial General Intelligence (AGI)</h3>
+                    <p>Systeme mit menschenähnlicher Intelligenz, die jede intellektuelle Aufgabe lösen können, die ein Mensch bewältigen kann. AGI würde Transfer-Lernen, Problemlösung in neuen Domänen und echtes Verständnis umfassen.</p>
+                    
+                    <div class="phase-details-grid">
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-clock"></i> Vorhersagen</h4>
+                            <div class="milestone-prediction">
+                                <div class="prediction-label">Vorhersagen zur AGI-Erreichung:</div>
+                                <div class="prediction-item">
+                                    <span class="researcher">Ray Kurzweil:</span> 2029
+                                </div>
+                                <div class="prediction-item">
+                                    <span class="researcher">DeepMind-Umfrage:</span> ~2035
+                                </div>
+                                <div class="prediction-item">
+                                    <span class="researcher">OpenAI-Schätzung:</span> 2030-2040
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-brain"></i> Schlüsselfähigkeiten</h4>
+                            <ul class="capabilities-list">
+                                <li>Allgemeine Problemlösefähigkeit</li>
+                                <li>Transferlernen über Domänen hinweg</li>
+                                <li>Abstrakte Konzepte verstehen</li>
+                                <li>Kontextbezogenes Schlussfolgern</li>
+                                <li>Anpassungsfähigkeit an neue Situationen</li>
+                            </ul>
+                        </div>
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-balance-scale"></i> Herausforderungen</h4>
+                            <p>Neben technischen Hürden müssen auch ethische, sicherheitsbezogene und regulatorische Fragen gelöst werden, bevor eine echte AGI entwickelt werden kann.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="evolution-detail" data-phase="3" id="asi-details">
+                    <h3>Artificial Superintelligence (ASI)</h3>
+                    <p>KI, die menschliche Intelligenz weit übertrifft und möglicherweise zu einer technologischen Singularität führt - einem Punkt, an dem der technologische Fortschritt so schnell wird, dass er unvorhersehbare Änderungen in der menschlichen Zivilisation auslöst.</p>
+                    
+                    <div class="phase-details-grid">
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Potenzielle Auswirkungen</h4>
+                            <p>Eine ASI könnte nahezu jedes wissenschaftliche, technologische und gesellschaftliche Problem lösen, birgt aber auch existenzielle Risiken, wenn ihre Ziele nicht mit menschlichen Werten übereinstimmen.</p>
+                        </div>
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-quote-left"></i> Expertenmeinungen</h4>
+                            <div class="quote-block">
+                                "Die erste ultraintelligente Maschine ist die letzte Erfindung, die der Mensch je machen muss, vorausgesetzt, die Maschine ist fügsam genug, um uns zu sagen, wie wir sie unter Kontrolle halten können."
+                                <span class="quote-author">- Irving John Good, 1965</span>
+                            </div>
+                        </div>
+                        <div class="phase-detail-card">
+                            <h4><i class="fas fa-shield-alt"></i> ASI-Sicherheit</h4>
+                            <p>Forscher arbeiten bereits an Methoden, um sicherzustellen, dass zukünftige superintelligente Systeme sicher und mit menschlichen Werten übereinstimmend entwickelt werden können.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="phases-container">
+                <!-- Die bestehenden Phase-Karten bleiben erhalten -->
+            </div>
+        </section>
+        
+            <!-- Das 5-Stufen-Modell -->
+            <h3 class="section-title" style="font-size: 1.5rem; margin-top: 40px;">Das 5-Stufen-Modell der KI-Entwicklung</h3>
+            
+            <div class="phases-container">
+                <div class="phase">
+                    <h4 class="phase-title">Stufe 1: Reaktive KI</h4>
+                    <div class="phase-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <p class="phase-description">Einfache Systeme ohne Gedächtnis, die nur auf aktuelle Eingaben reagieren. Beispiel: Deep Blue, das Schach auf höchstem Niveau spielen konnte, aber keine Erfahrungen sammelte.</p>
+                    <div class="phase-status completed">
+                        <i class="fas fa-check-circle"></i> Erreicht: 1990er
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <h4 class="phase-title">Stufe 2: Limitiertes Gedächtnis</h4>
+                    <div class="phase-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <p class="phase-description">Systeme, die vergangene Daten nutzen und daraus lernen können. Die meisten aktuellen KI-Systeme, einschließlich selbstfahrender Autos und Chatbots, befinden sich auf dieser Stufe.</p>
+                    <div class="phase-status current">
+                        <i class="fas fa-circle"></i> Aktueller Stand
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <h4 class="phase-title">Stufe 3: Theory of Mind</h4>
+                    <div class="phase-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <p class="phase-description">Hypothetische Systeme, die Gedanken und Absichten anderer verstehen können. Diese Stufe erfordert ein tiefes Verständnis menschlicher Emotionen und Motivationen.</p>
+                    <div class="phase-status future">
+                        <i class="fas fa-clock"></i> Fortschritte erkennbar
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <h4 class="phase-title">Stufe 4: Selbstbewusstsein</h4>
+                    <div class="phase-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <p class="phase-description">Theoretische Systeme mit einem eigenen Bewusstsein und Verständnis der eigenen Existenz. Sie könnten ihre eigenen Gedanken und mentalen Zustände verstehen und reflektieren.</p>
+                    <div class="phase-status distant">
+                        <i class="fas fa-question-circle"></i> Konzeptuell
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <h4 class="phase-title">Stufe 5: Superintelligenz</h4>
+                    <div class="phase-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <p class="phase-description">KI-Systeme, die menschliche Intelligenz in allen Bereichen übertreffen und möglicherweise neue Formen des Denkens entwickeln, die für Menschen schwer verständlich sein könnten.</p>
+                    <div class="phase-status theoretical">
+                        <i class="fas fa-book"></i> Theoretisch
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- KI-Benchmarks und Messdaten -->
+        <section id="benchmarks-section" class="section" style="display: none;">
+            <h2 class="section-title">KI-Benchmarks und Leistungsdaten</h2>
+            
+            <div class="benchmark-overview">
+                <div class="overview-chart">
+                    <canvas id="benchmarkOverviewChart"></canvas>
+                </div>
+                <div class="overview-text">
+                    <p>Die Leistungsfähigkeit moderner KI-Systeme wird durch standardisierte Benchmarks und Messwerte erfasst. Diese bieten einen objektiven Vergleich verschiedener Modelle und dokumentieren die Entwicklungsgeschwindigkeit.</p>
+                    <p>Das Diagramm zeigt die Leistungsentwicklung der führenden KI-Modelle in verschiedenen Leistungsdimensionen seit 2018, normalisiert auf menschliches Expertenniveau (=100).</p>
+                </div>
+            </div>
+            
+            <!-- MMLU Benchmark Tabelle -->
+            <h3 class="section-title" style="font-size: 1.5rem; margin-top: 40px;">MMLU Benchmark (Massive Multitask Language Understanding)</h3>
+            
+            <div class="benchmark-details">
+                <div class="benchmark-description">
+                    <p>MMLU ist ein umfassender Benchmark, der KI-Systeme in 57 verschiedenen Bereichen testet, darunter Mathematik, Geschichte, Recht, Ethik und Wissenschaft. Er gilt als einer der aussagekräftigsten Tests für die allgemeine Intelligenz von Sprachmodellen.</p>
+                    <div class="benchmark-domains">
+                        <span class="domain">MINT</span>
+                        <span class="domain">Sozialwissenschaften</span>
+                        <span class="domain">Geisteswissenschaften</span>
+                        <span class="domain">Medizin</span>
+                        <span class="domain">Jura</span>
+                        <span class="domain">Wirtschaft</span>
+                    </div>
+                </div>
+                <div class="benchmark-chart">
+                    <canvas id="mmluDetailChart"></canvas>
+                </div>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Modell</th>
+                        <th>Erscheinungsjahr</th>
+                        <th>MMLU-Score (%)</th>
+                        <th>Besonderheiten</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BERT-Large</td>
+                        <td>2018</td>
+                        <td>54.0</td>
+                        <td>Erstes bidirektionales Transformer-Modell</td>
+                    </tr>
+                    <tr>
+                        <td>GPT-3</td>
+                        <td>2020</td>
+                        <td>70.0</td>
+                        <td>175 Milliarden Parameter</td>
+                    </tr>
+                    <tr>
+                        <td>Gopher</td>
+                        <td>2021</td>
+                        <td>75.2</td>
+                        <td>DeepMind, 280 Milliarden Parameter</td>
+                    </tr>
+                    <tr>
+                        <td>PaLM</td>
+                        <td>2022</td>
+                        <td>79.3</td>
+                        <td>Google, 540 Milliarden Parameter</td>
+                    </tr>
+                    <tr>
+                        <td>GPT-4</td>
+                        <td>2023</td>
+                        <td>86.4</td>
+                        <td>Multimodales Modell (Text + Bild)</td>
+                    </tr>
+                    <tr>
+                        <td>Claude 3 Opus</td>
+                        <td>2024</td>
+                        <td>87.9</td>
+                        <td>Stark in ethischem Reasoning</td>
+                    </tr>
+                    <tr>
+                        <td>Claude 3.5 Sonnet</td>
+                        <td>2025</td>
+                        <td>90.1</td>
+                        <td>Übertrifft frühere Anthropic-Modelle</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>Gemini Ultra 2</td>
+                        <td>2025</td>
+                        <td>93.7</td>
+                        <td>Aktueller Rekordhalter</td>
+                    </tr>
+                    <tr class="human-row">
+                        <td>Menschlicher Experte</td>
+                        <td>-</td>
+                        <td>89.8</td>
+                        <td>Benchmark für menschliche Leistung</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- HumanEval Benchmark Tabelle -->
+            <h3 class="section-title" style="font-size: 1.5rem; margin-top: 40px;">HumanEval (Code-Generierung)</h3>
+            
+            <div class="benchmark-details">
+                <div class="benchmark-description">
+                    <p>HumanEval misst die Fähigkeit von KI-Modellen, funktionalen Code zu schreiben. Der Benchmark besteht aus 164 Programmieraufgaben unterschiedlicher Komplexität, von einfachen Funktionen bis zu komplexen Algorithmen.</p>
+                </div>
+                <div class="benchmark-chart">
+                    <canvas id="codeGenChart"></canvas>
+                </div>
+            </div>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Modell</th>
+                        <th>Erscheinungsjahr</th>
+                        <th>HumanEval-Score (%)</th>
+                        <th>Sprachen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Codex</td>
+                        <td>2021</td>
+                        <td>41.8</td>
+                        <td>Python</td>
+                    </tr>
+                    <tr>
+                        <td>GPT-3.5</td>
+                        <td>2022</td>
+                        <td>48.1</td>
+                        <td>Multiple</td>
+                    </tr>
+                    <tr>
+                        <td>GPT-4</td>
+                        <td>2023</td>
+                        <td>67.0</td>
+                        <td>Multiple</td>
+                    </tr>
+                    <tr>
+                        <td>Claude 3 Opus</td>
+                        <td>2024</td>
+                        <td>75.3</td>
+                        <td>Multiple</td>
+                    </tr>
+                    <tr>
+                        <td>DeepSeek Coder</td>
+                        <td>2024</td>
+                        <td>82.1</td>
+                        <td>Multiple</td>
+                    </tr>
+                    <tr>
+                        <td>Claude 3.7 Sonnet</td>
+                        <td>2025</td>
+                        <td>89.4</td>
+                        <td>Multiple + DSLs</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>GPT-4.5 Turbo</td>
+                        <td>2025</td>
+                        <td>91.2</td>
+                        <td>Multiple + DSLs</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="ai-quote">
+                <i class="fas fa-quote-left"></i>
+                <blockquote>
+                    Wir stehen am Anfang einer Ära, in der KI-Systeme nicht nur menschenähnliche Fähigkeiten in klar definierten Aufgaben erreichen, sondern auch anfangen, die Grenzen zwischen verschiedenen Domänen zu überwinden und eine Form allgemeiner Intelligenz zu zeigen.
+                </blockquote>
+                <span class="quote-author">— Demis Hassabis, CEO von Google DeepMind (Februar 2025)</span>
+            </div>
+        </section>
+        
+        <!-- Footer-Bereich -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Exponentielles Wachstum der KI</h3>
+                    <p>Eine datenbasierte Visualisierung der KI-Entwicklung von 1950-2025</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Daten & Quellen</h3>
+                    <p>Die präsentierten Daten basieren auf wissenschaftlichen Publikationen, Unternehmensberichten und öffentlich verfügbaren Benchmark-Daten.</p>
+                    <p>Datenstand: 15. März 2025</p>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p> 2025 KI-Chronik | Visualisiert mit Chart.js und D3.js</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js" async></script>
+
+</body>
+</html>
