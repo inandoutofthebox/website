@@ -186,7 +186,7 @@
 <div class="overlay" id="overlay">
     <div class="window-box">
         <div class="overlay-content">
-            <p>Bevor Sie fortfahren, möchten wir Sie darauf hinweisen, dass Sie auf eine Seite zugreifen, die Daten zu Ihrem Gerät sammeln könnte. Um fortzufahren, müssen Sie bestätigen, dass Sie unsere <a href="./webrtc/Datenschutzerklärung.html" target="_blank">Datenschutzerklärung</a> gelesen und verstanden haben.</p>
+            <p>Bevor Sie fortfahren, möchten wir Sie darauf hinweisen, dass Sie auf eine Seite zugreifen, die Daten zu Ihrem Gerät sammeln könnte. Um fortzufahren, müssen Sie bestätigen, dass Sie unsere <a href="./html/DSGVO/Datenschutzerklärung.html" target="_blank">Datenschutzerklärung</a> gelesen und verstanden haben.</p>
             <label>
                 <input type="checkbox" id="privacyConsent" required> Ich habe die Datenschutzerklärung gelesen und akzeptiere diese.
             </label>
@@ -197,56 +197,32 @@
 
 
 <script>
-// Initially, the overlay is hidden
-    document.getElementById('overlay').style.display = 'none';
+window.onload = function() {
+    const overlay = document.getElementById('overlay');
+    const checkbox = document.getElementById('privacyConsent');
+    const confirmButton = document.getElementById('confirmButton');
+    
+    // Prüfen, ob bereits zugestimmt wurde
+    if (localStorage.getItem('privacyConsentAccepted') === 'true') {
+        overlay.style.display = 'none';
+    } else {
+        overlay.style.display = 'flex';
+    }
 
-    // Variable to track if the overlay has been shown before
-    let overlayShown = false;
-
-    // Function to show the overlay when the link is clicked
-    document.getElementById('webrtcLink').addEventListener('click', function() {
-      if (!overlayShown) {
-        // Show the overlay only when clicked for the first time
-        document.getElementById('overlay').style.display = 'flex';
-        overlayShown = true;
-      }
+    // Event-Listener für die Checkbox
+    checkbox.addEventListener('change', function() {
+        confirmButton.disabled = !this.checked;
     });
 
-    // Function to hide the overlay and redirect after confirmation
-    document.getElementById('confirmButton').addEventListener('click', function() {
-      // Hide the overlay
-      document.getElementById('overlay').style.display = 'none';
-      // Redirect to the WebRTC page
-      window.location.href = './webrtc/'; // Relative URL for redirection
+    // Overlay ausblenden und Zustimmung speichern
+    confirmButton.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        localStorage.setItem('privacyConsentAccepted', 'true');
+        // Optional: Weiterleitung nur, wenn du wirklich auf eine andere Seite willst
+        // window.location.href = './index.html';
     });
-	
-      window.addEventListener('load', () => {
-                      // noinspection JSUnresolvedVariable
-                      let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                      let xhr = new XMLHttpRequest();
-                      xhr.open('GET', './../music/b.mp3');
-                      xhr.responseType = 'arraybuffer';
-                      xhr.addEventListener('load', () => {
-                          let playsound = (audioBuffer) => {
-                              let source = audioCtx.createBufferSource();
-                              source.buffer = audioBuffer;
-                              source.connect(audioCtx.destination);
-                              source.loop = true;
-                              source.start();
-      
-                              setTimeout(function () {
-                                   // das //enfernen und die tickrate erhöhen um das lied zu wiederholen
-                                  document.querySelector('.output').appendChild(t);
-                                  playsound(audioBuffer);
-                                  //normalwerte sind 1000 und 2500 [ACHTUNG: AKTUELL EARRAPE]
-                              }, 0.1 + Math.random()*0.1);
-                          };
-      
-                          audioCtx.decodeAudioData(xhr.response).then(playsound);
-                      });
-                      xhr.send();
-                  });
-      
+};
+
         </script>
 
 <script>
