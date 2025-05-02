@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Über mich - David Schöffmann</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        .background-canvas-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+        }
+        #canvas {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+        .uebermich-container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 60px auto 80px auto;
+            background: rgba(34, 34, 34, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.6);
+            padding: 32px 40px;
+        }
+        h1 {
+            margin-top: 0;
+            color: #4CAF50;
+            font-size: 2.5rem;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        strong {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: rgba(76, 175, 80, 0.2);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        a {
+            color: #4da6ff;
+            text-decoration: none;
+            border-bottom: 1px dotted #4da6ff;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            color: #4CAF50;
+            border-bottom: 1px solid #4CAF50;
+        }
+        .quote {
+            border-left: 4px solid #4CAF50;
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        @media (max-width: 600px) {
+            .uebermich-container {
+                padding: 20px 15px;
+                margin: 30px auto 60px auto;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+		.menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background: rgba(34, 34, 34, 0.95);
+    z-index: 100;
+    padding: 30px 0;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+}
+
+#menu ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+#menu ul li {
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+#menu ul li.active {
+    border-left: 4px solid #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+#menu ul li:hover {
+    background-color: rgba(76, 175, 80, 0.05);
+    border-left: 4px solid #4CAF50;
+}
+
+#menu ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    display: block;
+    font-size: 1.1rem;
+    border-bottom: none;
+}
+
+#menu ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Anpassung des Hauptcontainers, damit er nicht vom Menü überdeckt wird */
+.uebermich-container {
+    margin-left: 25% !important;
+    max-width: 45% !important;
+}
+
+/* Responsive Design für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .menu-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px 0;
+    }
+    
+    #menu ul {
+        margin-top: 10px;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    #menu ul li {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 8px 15px;
+    }
+    
+    #menu ul li.active {
+        border-left: none;
+        border-bottom: 2px solid #4CAF50;
+    }
+    
+    #menu ul li:hover {
+        border-left: none;
+        border-bottom: 2px solid #4CAF50;
+    }
+    
+}
+/* Menü-Styling */
+.menu-container {
+    position: fixed;
+    top: 0;
+    left: -200px; /* Anfangs ausgeblendet */
+    width: 200px;
+    height: 100vh;
+    background: rgba(34, 34, 34, 0.95);
+    z-index: 100;
+    transition: left 0.3s ease;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+}
+
+.menu-container.active {
+    left: 0; /* Eingeblendet */
+}
+
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    background: rgba(34, 34, 34, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+}
+
+.menu-icon {
+    color: #4CAF50;
+    font-size: 24px;
+}
+
+.menu-items ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 60px;
+}
+
+.menu-items ul li {
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.menu-items ul li.active {
+    border-left: 4px solid #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.menu-items ul li:hover {
+    background-color: rgba(76, 175, 80, 0.05);
+    border-left: 4px solid #4CAF50;
+}
+
+.menu-items ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    display: block;
+    font-size: 1.1rem;
+    border-bottom: none;
+}
+
+.menu-items ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Zentrierter Container */
+.uebermich-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1%;
+    margin: 60px auto 80px auto;
+    background: rgba(34, 34, 34, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.6);
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontal zentrieren */
+}
+
+.uebermich-container h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.uebermich-container p {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-container {
+        width: 100%;
+        height: auto;
+        top: -250px;
+        left: 0;
+        transition: top 0.3s ease;
+    }
+    
+    .menu-container.active {
+        top: 0;
+        left: 0;
+    }
+    
+    .menu-toggle {
+        top: auto;
+        bottom: -40px;
+        right: 20px;
+        border-radius: 0 0 5px 5px;
+    }
+    
+    .menu-items ul {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .menu-items ul li {
+        padding: 8px 15px;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+    }
+    
+    .menu-items ul li.active {
+        border-left: none;
+        border-bottom: 2px solid #4CAF50;
+    }
+    
+    .menu-items ul li:hover {
+        border-left: none;
+        border-bottom: 2px solid #4CAF50;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="menu-container" id="menu">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="menu-icon">≡</i>
+        </div>
+        <nav class="menu-items">
+            <ul>
+                <li><a href="./../index.html">Startseite</a></li>
+                <li class="active"><a href="Ueber_Mich.html">Über mich</a></li>
+                <li><a href="Links.html">Links</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="background-canvas-wrapper">
+        <canvas id="canvas"></canvas>
+    </div>
+        <div class="uebermich-container">
+        <h1>Über mich</h1>
+        
+        <p>
+            Hi, ich bin <strong>David Schöffmann</strong>, 23 Jahre jung, wohnhaft in Heidelberg und vermutlich der Einzige, der sich beim Anblick einer Platine genauso freut wie andere beim Anblick von Pizza. Technik ist für mich nicht nur ein Hobby, sondern ein Lebensstil, irgendwo zwischen <em>MacGyver</em>, Chuck Norris (zumindest was Zimmerpflanzen angeht) und einem wandelnden <a href="https://stackoverflow.com/" target="_blank" title="Stack Overflow - Frage-und-Antwort-Plattform für Programmierer">Stack Overflow</a>.
+        </p>
+        
+        <p>
+            Meine Reise in die IT begann früh, als Georg, ein Freund meines Vaters und legendärer Konsolen-Modder, mir zeigte, dass man aus einer PS3 oder der alten schwarzen Xbox mit dem grünen Ring viel mehr rausholen kann als nur langweilige Standard-Games. Von ihm habe ich gelernt, dass Technik nicht nur zum Benutzen, sondern vor allem zum Auseinandernehmen, Optimieren und manchmal auch zum Verwirren gedacht ist. <strong>Fun Fact:</strong> Wenn du wissen willst, wie viele Konsolen man aufschrauben kann, bevor die Eltern nervös werden, die Antwort ist mehr, als du denkst.
+        </p>
+        
+        <p>
+            In der Schule hat mir Herr Velthaus das <a href="https://www.elektronik-kompendium.de/sites/grd/0201111.htm" target="_blank" title="Grundlagen des Lötens">Löten</a> beigebracht. Wer einmal mit dem Lötkolben gekämpft hat, weiß: Aufgeben ist keine Option, weder bei Platinen noch im echten Leben. Und ja, auch wenn der Rauchmelder mal losgeht – das gehört dazu. Danke, Herr Velthaus, für die glühenden Drähte und die Erkenntnis, dass Geduld und ein bisschen Zinn fast alles retten können.
+        </p>
+        
+        <p>
+            Während meiner Ausbildung habe ich das volle IT-Buffet bekommen und mir auch Privat bis heute einiges an Wissen darüber hinaus angesammelt: <a href="https://www.elektronik-kompendium.de/sites/net/index.htm" target="_blank" title="Netzwerktechnik Grundlagen">Netzwerke</a>, <a href="https://www.ionos.de/digitalguide/server/knowhow/was-ist-ein-server/" target="_blank" title="Was ist ein Server?">Server</a>, Datensicherung, Softwareverteilung, <a href="https://www.redhat.com/de/topics/automation/what-is-it-automation" target="_blank" title="Was ist IT-Automatisierung?">Automatisierung</a>, User Support, <a href="https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Cyber-Sicherheit/cyber-sicherheit_node.html" target="_blank" title="Cyber-Sicherheit">Cybersicherheit</a>, <a href="https://www.ionos.de/digitalguide/server/knowhow/was-ist-scripting/" target="_blank" title="Was ist Scripting?">Scripting</a> (<span class="highlight">Python</span>, <span class="highlight">Bash</span>, <span class="highlight">Golang</span>, <span class="highlight">pwsh</span>, <a href="https://www.linux.org/" target="_blank" title="Linux - Open Source Betriebssystem">Linux</a>, <a href="https://www.lpic.org/" target="_blank" title="Linux Professional Institute Certification">LPIC</a>), <a href="https://www.docker.com/resources/what-container/" target="_blank" title="Was ist Containerisierung?">Containerisierung</a> (<span class="highlight">Docker</span>, <span class="highlight">Kubernetes</span>), Datenbanken (<span class="highlight">PostgreSQL</span>, <span class="highlight">MariaDB</span>, <span class="highlight">Redis</span>), <a href="https://www.ansible.com/overview/how-ansible-works" target="_blank" title="Wie funktioniert Ansible?">Ansible</a>, <a href="https://learn.microsoft.com/de-de/windows/wsl/about" target="_blank" title="Windows Subsystem für Linux">WSL</a> und sogar Robotik mit RosPug. Mein <a href="https://www.heise.de/ratgeber/Homelab-So-bauen-Sie-Ihr-eigenes-Rechenzentrum-fuer-zu-Hause-7251635.html" target="_blank" title="Homelab - Eigenes Rechenzentrum für zu Hause">Homelab</a> ist mein persönlicher Spielplatz, auf dem ich alles ausprobiere, was Spaß macht und mich weiterbringt, quasi das <span class="highlight">1337</span>er Upgrade vom Kinderzimmer.
+        </p>
+        
+        <p>
+            Mein Herz schlägt besonders für alles rund um <a href="https://www.elektronik-kompendium.de/sites/kom/index.htm" target="_blank" title="Grundlagen der Funktechnik">Funk</a>, Manipulation und Sicherheit. Mit <a href="https://greatscottgadgets.com/hackrf/" target="_blank" title="HackRF One - Software Defined Radio">HackRF One</a> und <a href="https://limemicro.com/products/boards/limesdr/" target="_blank" title="LimeSDR - Software Defined Radio">LimeSDR</a> fange ich Signale aus der Luft, analysiere Protokolle, spiele mit <a href="https://www.heise.de/select/ct/2020/5/2002713065986742145" target="_blank" title="GPS-Spoofing - Manipulation von GPS-Signalen">GPS-Spoofing</a> (Natürlcih hinter 3 Meter dicken Betonwänden) und finde heraus, wie Kreditkarten (Natürlich nur Testkarten) und Funkchips wirklich funktionieren. Wenn es um Hardware geht, ist die gute alte <a href="https://www.elektronik-kompendium.de/sites/com/0310281.htm" target="_blank" title="UART - Universal Asynchronous Receiver Transmitter">UART</a> mein geheimer Zugang – mit vier Pins (Strom, Masse, Senden, Empfangen) kann ich Geräte zum Reden bringen, debuggen oder neue Software, Homebrews aufspielen. Für kreative Sicherheitstests bastle ich mit einem <a href="https://www.mikrocontroller.net/articles/AVR_ATmega32" target="_blank" title="ATmega32u4 Mikrocontroller">ATmega32u4</a> meine eigene <a href="https://shop.hak5.org/products/usb-rubber-ducky" target="_blank" title="Rubber Ducky - USB-Angriffswerkzeug">Rubber Ducky</a>, die sich als Tastatur ausgibt und beliebige Eingaben simuliert. Und weil ich wissen will, wie weit man Systeme austricksen kann, habe ich mich auch schon mit CPU-Glitches, <a href="https://owasp.org/www-community/vulnerabilities/Buffer_Overflow" target="_blank" title="Buffer Overflow - Sicherheitslücke">Buffer Overflows</a> und kleinen Test-Trojanern beschäftigt, ach ja Windoof ;) . Keine Sorge, alles nur zu Forschungszwecken – und ja, Windows, ich grinse immer noch. <span class="highlight">Antivirus not found, continue doing nothing. </span>
+        </p>
+        
+        <p>
+            Und jetzt noch mein persönlicher KI-Part, denn was wäre ein Homelab ohne ein bisschen künstliche Intelligenz? <a href="https://www.bmbf.de/bmbf/de/forschung/zukunftstechnologien-fuer-innovationen/kuenstliche-intelligenz/kuenstliche-intelligenz_node.html" target="_blank" title="Was ist Künstliche Intelligenz?">KI</a> ist für mich nicht nur Buzzword-Bingo, sondern ein echter Gamechanger. In meinem Alltag nutze ich KI-Tools und <a href="https://www.ibm.com/de-de/topics/machine-learning" target="_blank" title="Was ist Machine Learning?">Machine Learning</a>, um Prozesse zu automatisieren und aus Daten wirklich schlau zu werden. Mit Plattformen wie <a href="https://n8n.io/" target="_blank" title="n8n - Workflow Automation Tool">n8n</a> kann ich KI-gestützte Workflows bauen, die Routineaufgaben übernehmen, Fehler minimieren und sogar selbstständig aus ihren Erfahrungen lernen – quasi wie ein digitaler Praktikant, nur ohne Kaffeepausen und mit deutlich mehr Rechenpower.
+        </p>
+        
+        <p>
+            Aber was bringt die klügste KI, wenn das Netzwerk lahmt? Deshalb liebe ich auch die Welt der Netzwerke und Routing-Geschichten. <a href="https://www.elektronik-kompendium.de/sites/net/0812281.htm" target="_blank" title="Grundlagen des Routings">Routing</a> ist für mich wie das Navigationssystem im Datenverkehr: Ich beschäftige mich mit allem von klassischen Routing-Tabellen über statische Routen (wo man dem Router noch selbst sagt, wo es langgeht) bis hin zu dynamischen Protokollen wie <a href="https://www.elektronik-kompendium.de/sites/net/0906051.htm" target="_blank" title="OSPF - Open Shortest Path First">OSPF</a> und <a href="https://www.elektronik-kompendium.de/sites/net/0905271.htm" target="_blank" title="BGP - Border Gateway Protocol">BGP</a>, die dafür sorgen, dass Datenpakete immer den besten Weg finden – auch wenn das Internet mal wieder wie ein Stau auf der A5 aussieht. <a href="https://www.elektronik-kompendium.de/sites/net/0906221.htm" target="_blank" title="NAT - Network Address Translation">NAT</a> (Network Address Translation) ist dabei mein heimlicher Held, weil es ermöglicht, dass viele Geräte mit nur einer öffentlichen IP ins Internet kommen, und dabei auch noch ein bisschen Sicherheit mitbringt. Ob Routing, NAT, OSPF oder BGP, ich finde es faszinierend, wie das Zusammenspiel dieser Technologien unser digitales Leben überhaupt erst möglich macht.
+        </p>
+        
+        <p>
+            Besonders spannend finde ich, wie KI und Robotik zusammenwachsen. Bei meinen Projekten mit RosPug, meinem vierbeinigen Roboterhund, lasse ich <a href="https://www.ibm.com/de-de/topics/neural-networks" target="_blank" title="Was sind neuronale Netze?">neuronale Netze</a> und <a href="https://www.ibm.com/de-de/topics/deep-learning" target="_blank" title="Was ist Deep Learning?">Deep Learning</a> zum Einsatz kommen, damit der Kleine nicht nur Hindernisse erkennt, sondern auch lernt, wie er sich am besten durch die Wohnung schlängelt – und dabei möglichst keine Glücksfeder umrennt. Die Sensoren liefern jede Menge Daten, die von der KI ausgewertet werden, damit der Roboter immer besser wird. So wird aus stumpfem Befehlsempfänger ein lernfähiger Kumpel auf vier Beinen.
+        </p>
+        
+        <p>
+            KI ist für mich aber auch ein Werkzeug zum kreativen Austoben: Ob beim Training von Modellen, der Entwicklung smarter Automatisierungen oder beim Bau von kleinen <a href="https://www.ibm.com/de-de/topics/expert-systems" target="_blank" title="Was sind Expertensysteme?">Expertensystemen</a>, die mir im Alltag helfen, die Möglichkeiten sind fast grenzenlos. Und das Beste: Mit Open-Source-Tools und ein bisschen Logik kann man heute schon Dinge bauen, für die man früher einen Supercomputer und ein Team aus Wissenschaftlern gebraucht hätte.
+        </p>
+        
+        <p>
+            Und ganz ehrlich: Wer einmal versucht hat, eine Routing-Schleife zu debuggen oder BGP-Fehler zu finden, weiß, dass auch die beste KI manchmal nur mit den Schultern zuckt und sagt: „<strong>404 – Route not found.</strong>"
+        </p>
+        
+        <p>
+            Wissen weiterzugeben ist für mich Pflicht und Kür zugleich. Ich dokumentiere meine Projekte und Erkenntnisse auf <a href="https://github.com/" target="_blank" title="GitHub - Plattform für Softwareentwicklung">GitHub</a>, damit andere nicht immer wieder das Rad neu erfinden müssen. Props an <a href="https://www.youtube.com/c/LiveOverflow" target="_blank" title="LiveOverflow - YouTube-Kanal für IT-Security">LiveOverflow</a>, der mit seinen Videos nicht nur zeigt, wie cool IT-Security ist, sondern auch, wie viel Spaß es macht, Wissen zu teilen. Sein Motto begleitet mich dabei:
+        </p>
+        
+        <div class="quote">
+            "Stop wasting your time playing games, and do something useful! Learn more about hacking, learn a new programming language, practice with CTF challenges, write a blog post, watch those talks you missed, read the papers you have bookmarked, or finally learn radare, what is wrong with you? You are wasting your time!"<br>
+            – LiveOverflow
+        </div>
+        
+        <p>
+            Neben all dem Technik-Kram gibt's bei mir natürlich auch ein Leben außerhalb von Bits und Bytes. Ich habe ein Herz für Pflanzen, vor allem für Glücksfedern – die sind so robust, die könnten vermutlich sogar einen Stromausfall im Serverraum überleben. Wenn meine Glücksfeder irgendwann anfängt, sich selbst zu <a href="https://de.wikipedia.org/wiki/Root-Zugriff" target="_blank" title="Root-Zugriff - Administratorrechte">rooten</a>, weiß ich, dass ich es mit der Technik vielleicht doch etwas übertrieben habe.
+        </p>
+        
+        <p>
+            Aber nicht nur Pflanzen sorgen für Ausgleich: Ich zocke leidenschaftlich gern, ob PC oder Konsole, Hauptsache es gibt was zu entdecken oder zu knacken. Wenn ich mal nicht vor dem Bildschirm sitze, findet man mich beim Schwimmen oder beim <a href="https://www.alpenverein.de/bergsport/sportarten/klettern/bouldern/bouldern_aid_10333.html" target="_blank" title="Bouldern - Klettern ohne Seil in Absprunghöhe">Bouldern</a> – da kann man wunderbar abschalten, sich auspowern und neue Ideen tanken. Und natürlich darf das Löten nicht fehlen: Egal ob Platinen retten oder neue Projekte basteln, der Lötkolben ist mein treuer Begleiter. Wer einmal mit dem Lötkolben gekämpft hat, weiß, dass man im Leben nie zu früh aufgeben sollte – und dass ein guter Geruch nach Zinn manchmal mehr motiviert als jeder Energy-Drink.
+        </p>
+        
+        <p>
+            Und das Wichtigste: Neben all meinen Technikabenteuern bin ich natürlich auch immer gerne für meine Freunde und Familie da. Egal ob es um einen kaputten Laptop, eine rätselhafte Fehlermeldung, einen Pflanzen-Gieß-Notfall oder einfach nur um einen guten Rat geht – auf mich kann man zählen. Für meine Lieblingsmenschen nehme ich mir immer Zeit, denn echte <a href="https://www.social-engineering.org/framework/general-discussion/social-engineering-defined/" target="_blank" title="Was ist Social Engineering?">Social (Engineering hehe)</a> -Skills zeigen sich nicht nur am Rechner, sondern auch im echten Leben.
+        </p>
+        
+        <p>
+            <strong>Mein Motto:</strong> Niemals aufgeben, immer neugierig bleiben, und wenn am Ende ein Teil übrig bleibt, ist das nur der Beweis, dass wir wirklich kreativ waren. Technik ist wie ein <a href="https://de.wikipedia.org/wiki/Escape_Room" target="_blank" title="Escape Room - Abenteuerspiel">Escape Room</a> – man weiß nie, was einen erwartet, aber genau das macht den Spaß aus. Und wenn du denkst, du hast alles gesehen, kommt garantiert irgendwo noch ein Easter Egg dazu.
+        </p>
+        
+        <p>
+            Wenn du auch Lust hast, Technik zu entdecken, zu tüfteln, zu zocken, zu schwimmen, zu bouldern oder einfach wissen willst, wie Dinge wirklich funktionieren, dann lass uns quatschen. Zusammen macht's doppelt Spaß – und vielleicht bleibt am Ende ja sogar kein Teil übrig, aber dafür gibt's eine gute Story und ein bisschen mehr im Alltag.
+        </p>
+    </div>
+
+    <script>
+        // Canvas-Animation mit Punkten und Mausinteraktion
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+        let lines = [];
+        let triangles = []; 
+        let mouseX = 0;
+        let mouseY = 0;
+        const mouseRadius = cmToPixels(5);
+        const blurRadius = cmToPixels(1);
+        let isHovered = false;
+
+        // Canvas-Dimensionen setzen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Punkte generieren
+        function generateDots() {
+            const numDots = Math.round((canvas.width * canvas.height) / 25000);
+            dots = [];
+            for (let i = 0; i < numDots; i++) {
+                dots.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: Math.random() - 0.05,
+                    vy: Math.random() - 0.05,
+                    radius: Math.random() * 3 + 1
+                });
+            }
+        }
+
+        // Linien zwischen Punkten generieren
+        function generateLines() {
+            lines = [];
+            for (let i = 0; i < dots.length; i++) {
+                for (let j = i + 1; j < dots.length; j++) {
+                    lines.push({ start: dots[i], end: dots[j], opacity: 0 });
+                }
+            }
+        }
+
+        // Punkte zeichnen
+        function drawDots() {
+            for (let dot of dots) {
+                const distance = Math.hypot(dot.x - mouseX, dot.y - mouseY);
+                const alpha = distance <= mouseRadius ? 1 : Math.max(0, 1 - (distance - mouseRadius) / blurRadius);
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#4CAF50';
+                ctx.fill();
+            }
+        }
+
+        // Linien zeichnen
+        function drawLines() {
+            ctx.strokeStyle = '#4CAF50';
+            ctx.lineWidth = 0.5;
+            for (let line of lines) {
+                const startDistance = Math.hypot(line.start.x - mouseX, line.start.y - mouseY);
+                const endDistance = Math.hypot(line.end.x - mouseX, line.end.y - mouseY);
+                if (startDistance < mouseRadius && endDistance < mouseRadius) {
+                    const opacity = Math.max(0, 1 - (Math.max(startDistance, endDistance) / mouseRadius));
+                    ctx.globalAlpha = opacity * 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(line.start.x, line.start.y);
+                    ctx.lineTo(line.end.x, line.end.y);
+                    ctx.stroke();
+                }
+            }
+            ctx.globalAlpha = 1;
+        }
+
+        // Dreiecke zeichnen
+        function drawTriangles() {
+            if (isHovered) {
+                for (let triangle of triangles) {
+                    let maxDistance = 0;
+                    for (let point of triangle) {
+                        const distance = Math.hypot(point.x - mouseX, point.y - mouseY);
+                        if (distance > maxDistance) {
+                            maxDistance = distance;
+                        }
+                    }
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(triangle[0].x, triangle[0].y);
+                    ctx.lineTo(triangle[1].x, triangle[1].y);
+                    ctx.lineTo(triangle[2].x, triangle[2].y);
+                    ctx.closePath();
+                    
+                    const alpha = Math.max(0, 1 - (maxDistance / mouseRadius));
+                    ctx.fillStyle = `rgba(76, 175, 80, ${alpha * 0.05})`;
+                    ctx.fill();
+                }
+            }
+        }
+
+        // Punkte aktualisieren
+        function updateDots() {
+            for (let dot of dots) {
+                dot.x += dot.vx;
+                dot.y += dot.vy;
+                if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
+                if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
+            }
+        }
+
+        // Dreiecke im Mausradius erkennen
+        function detectTriangles() {
+            triangles = [];
+            for (let i = 0; i < dots.length; i++) {
+                for (let j = i + 1; j < dots.length; j++) {
+                    for (let k = j + 1; k < dots.length; k++) {
+                        const a = dots[i];
+                        const b = dots[j];
+                        const c = dots[k];
+                        if (isInRadius(a, mouseX, mouseY) && isInRadius(b, mouseX, mouseY) && isInRadius(c, mouseX, mouseY)) {
+                            triangles.push([a, b, c]);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Prüfen, ob ein Punkt im Mausradius liegt
+        function isInRadius(point, x, y) {
+            const distance = Math.hypot(point.x - x, point.y - y);
+            return distance <= mouseRadius;
+        }
+
+        // Zentimeter in Pixel umrechnen
+        function cmToPixels(cm) {
+            return cm * 37.8;
+        }
+
+        // Canvas löschen
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Animations-Loop
+        function animate() {
+            clearCanvas();
+            updateDots();
+            drawLines();
+            drawTriangles();
+            drawDots();
+            requestAnimationFrame(animate);
+        }
+
+        // Mausbewegung verfolgen
+        canvas.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isHovered = true;
+            detectTriangles();
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            isHovered = false;
+            triangles = [];
+        });
+
+        // Dreiecke kontinuierlich aktualisieren
+        setInterval(() => {
+            if (isHovered) {
+                detectTriangles();
+            }
+        }, 100);
+
+        // Initialisieren
+        generateDots();
+        generateLines();
+        animate();
+
+        // Canvas bei Fenstergrößenänderung anpassen
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            generateDots();
+            generateLines();
+        });
+		
+// Menü ein- und ausfahren
+function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('active');
+}
+
+// Menü schließen, wenn außerhalb geklickt wird
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    if (menu.classList.contains('active') && 
+        !menu.contains(event.target) && 
+        !menuToggle.contains(event.target)) {
+        menu.classList.remove('active');
+    }
+});
+
+		
+    </script>
+</body>
+</html>
